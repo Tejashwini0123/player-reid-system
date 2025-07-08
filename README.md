@@ -18,23 +18,17 @@ player-reid-system/
 ## 🚀 How to Run
 
 ### 1. Clone the repository:
-bash
 git clone https://github.com/Tejashwini0123/player-reid-system.git
 cd player-reid-system
 2. Set up a virtual environment (optional but recommended):
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 3. Install dependencies:
-bash
-Copy
-Edit
 pip install -r requirements.txt
 4. Place your video and YOLO model in the folder, then run:
-bash
-Copy
-Edit
-python player_reid_system.py
+python detect.py
 The output video will be saved as: output_with_reid.mp4
+
 🧠 How It Works
 Detection: Uses YOLOv11 to detect players (bounding boxes).
 
