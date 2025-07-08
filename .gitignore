@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pt
+*.mp4
+output_with_reid.mp4
+*.pyc
+.DS_Store
+*.log
+*.cache/
