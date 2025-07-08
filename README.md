@@ -1,65 +1,64 @@
-Player Re-Identification System using YOLOv11 + ResNet50
-This project implements an advanced Player Re-Identification (Re-ID) pipeline using:
+# Player Re-Identification System 🎯
 
-YOLOv11 for person detection
+This project implements an advanced **Player Re-Identification (Re-ID)** system using **YOLOv11** for object detection and **ResNet50** for appearance-based feature extraction. The goal is to track and consistently identify players across video frames based on visual similarity.
 
-ResNet50 for appearance-based feature extraction
+---
 
-Cosine similarity and IoU for identity matching and tracking
+## 📁 Project Structure
 
-The system reads an input video, detects players frame-by-frame, extracts features for each player, and tracks consistent identities across frames with assigned unique IDs.
+player-reid-system/
+├── player_reid_system.py # Main Python script
+├── yolov11_model.pt # YOLOv11 model weights (replace with actual model)
+├── 15sec_input_720p.mp4 # Sample input video
+├── requirements.txt # All dependencies
+├── README.md # This file
 
-📁 Project Structure
+---
+
+## 🚀 How to Run
+
+### 1. Clone the repository:
 bash
-Copy
-Edit
-├── reid_system.py           # Main script with PlayerReIDSystem class
-├── yolov11_model.pt         # Pre-trained YOLOv11 weights (your own)
-├── 15sec_input_720p.mp4     # Input video to test the system
-├── output_with_reid.mp4     # Output video with bounding boxes and IDs
-├── README.md                # You're here
-🚀 Features
-✅ Detects players using YOLOv11
-✅ Extracts visual features using ResNet50
-✅ Matches identities across frames using similarity + IoU
-✅ Assigns and maintains consistent ID colors
-✅ Outputs annotated video as output_with_reid.mp4
-
-🔧 Requirements
-Install dependencies using:
-
+git clone https://github.com/Tejashwini0123/player-reid-system.git
+cd player-reid-system
+2. Set up a virtual environment (optional but recommended):
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+3. Install dependencies:
 bash
 Copy
 Edit
 pip install -r requirements.txt
-If you don't have a requirements.txt, here's what you need:
-
+4. Place your video and YOLO model in the folder, then run:
 bash
 Copy
 Edit
-pip install torch torchvision opencv-python ultralytics numpy
-🧪 How to Run
-Ensure your .pt model and input .mp4 file exist in the directory. Then run:
-
-bash
-Copy
-Edit
-python reid_system.py
-✅ Output video will be saved as output_with_reid.mp4 in the same directory.
-
-📦 Model & Input Paths
-Edit the following lines in reid_system.py with your actual files:
-
-python
-Copy
-Edit
-MODEL_PATH = "yolov11_model.pt"
-VIDEO_PATH = "15sec_input_720p.mp4"
+python player_reid_system.py
+The output video will be saved as: output_with_reid.mp4
 🧠 How It Works
-YOLOv11 detects all people in each frame.
+Detection: Uses YOLOv11 to detect players (bounding boxes).
 
-ResNet50 extracts a 2048-dimensional feature vector for each person.
+Feature Extraction: Uses a pretrained ResNet50 model with the FC layer removed to extract 2048-dimensional features from each detected player.
 
-Features are compared with previously tracked individuals using cosine similarity + IoU.
+Matching: Computes cosine similarity + IoU score between new detections and existing tracks to maintain consistent IDs.
 
-New players are assigned a new ID; existing ones are tracked using their ID and color.
+Visualization: Draws bounding boxes and player IDs on each frame and saves the processed video.
+
+⚙️ Dependencies
+All required packages are listed in requirements.txt. Key ones include:
+torch
+ultralytics
+opencv-python
+numpy
+torchvision
+Pillow
+Make sure you have Python 3.8+ installed.
+🧾 Notes
+Confidence threshold is set to 0.5 for detections.
+You can adjust the similarity and IoU weights in the code for different scenarios.
+Designed to be simple, modular, and easy to extend (e.g., DeepSORT, motion models).
+
+🙋‍♀️ Author
+Tejashwini K
+Email: [tejashwinichary67.com]
+GitHub: github.com/Tejashwini0123
